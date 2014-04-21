@@ -1,0 +1,9 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: texter_development
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: texter_test

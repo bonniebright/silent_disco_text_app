@@ -34,4 +34,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'dotenv-rails'
+  gem 'vcr'
+  gem 'webmock'
 end

@@ -10,26 +10,17 @@ class TextsController < ApplicationController
 
   def new
     @text = Text.new
+    @address = Address.new
+    @addresses = Address.all
   end
 
-  # def edit
-  #   @text = Text.find(params[:id])
-  # end
 
-  # def update
-  #   @text = Text.find(params[:id])
-  #   if params[:text]
-  #     @text.update(texts_params)
-  #   end
-  #   redirect_to text_path
-  # end
 
   def create
-    @text = Text.new(texts_params)
+    @text = Text.create(texts_params)
     if @text.save
       flash[:notice] = "text sent!"
-      redirect_to user_path(@text.user)
-      end
+      redirect_to root_url
     else
       render 'new'
     end
@@ -44,8 +35,7 @@ class TextsController < ApplicationController
 private
 
   def texts_params
-    params.require(:text).permit(:to, :from, :body, :status)
+    params.require(:text).permit(:to, :from, :body)
   end
-end
 
 end

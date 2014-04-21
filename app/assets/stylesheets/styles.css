@@ -1,0 +1,14 @@
+.container {
+  max-width: 650px;
+}
+
+.jumbotron {
+  padding: 15px;
+  margin-bottom: 30px;
+  color: inherit;
+  text-align: center;
+}
+body {background-image:url(https://s3.amazonaws.com/crowdhoster/lonelydinosaur/uploads/campaigns/main_images/000/000/003/main.jpg?1396035847);
+  background-size: 100% auto;
+
+}

@@ -13,6 +13,9 @@ gem 'devise'
 gem 'faker'
 gem 'launchy'
 gem 'rest-client'
+gem 'psych', '~> 2.0.5'
+gem 'less-rails-bootstrap'
+gem 'therubyracer'
 # gem 'cancan'
 # gem 'paperclip', github: 'thoughtbot/paperclip'
 # gem 'autonumeric-rails'
@@ -22,12 +25,16 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
+  gem 'therubyracer'
+  gem 'less-rails'
+  gem 'dotenv-rails'
 end
 
 group :test, :development do
   gem 'rspec-rails'
   gem 'letter_opener'
   gem 'pry'
+  gem 'pry-debugger'
 end
 
 group :test do
@@ -37,4 +44,5 @@ group :test do
   gem 'dotenv-rails'
   gem 'vcr'
   gem 'webmock'
+
 end

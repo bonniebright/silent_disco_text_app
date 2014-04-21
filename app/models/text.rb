@@ -4,17 +4,19 @@ class Text < ActiveRecord::Base
 private
 
   def send_text
-    begin
+      begin
       response = RestClient::Request.new(
         :method => :post,
-        :url => "https://api.twilio.com/2010-04-01/Accounts/#{ENV['TWILIO_ACCOUNT_SID']}/Texts.json",
+        :url => "https://api.twilio.com/2010-04-01/Accounts/#{ENV['TWILIO_ACCOUNT_SID']}/Messages.json",
         :user => ENV['TWILIO_ACCOUNT_SID'],
         :password => ENV['TWILIO_AUTH_TOKEN'],
         :payload => { :Body => body,
                       :To => to,
                       :From => from }
       ).execute
-    rescue
+   rescue RestClient::BadRequest => error
+      message = JSON.parse(error.response)['message']
+      errors.add(:base, message)
       false
     end
   end

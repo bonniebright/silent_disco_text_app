@@ -10,7 +10,7 @@
 
 <div class="container">
   <div class="navbar navbar-default navbar-fixed-top">
-    <%= link_to "Home", root_url, class: "navbar-text pull-left" %>
+    <%= link_to "PDX Silent Disco", root_url, class: "navbar-text pull-left" %>
     <div class="navbar-text">
       <div class="center-bold">
         <%= flash[:notice] %>
@@ -18,13 +18,27 @@
       </div>
     </div>
     <% if current_user %>
-      <%= link_to "Log Out", session_path("current"), method: "delete", class: "navbar-text pull-right" %>
-      <div class="navbar-text pull-right">
-       Logged in as &nbsp;<%= link_to current_user.username, user_path(current_user) %>
-      </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to "Send New Text", new_text_path %> </a></li>
+        <li class="active"><%= link_to 'Edit profile', edit_user_registration_path %> </li>
+
+    </div>
+      </ul>
+
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-primary" %></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <div class="navbar-text">
+            <li><h7>Logged in as <%= current_user.email %></h7></li>
+          </div>
+        </ul>
     <% else %>
-      <%= link_to "Log In", new_session_path, class: "navbar-text pull-right" %>
-      <%= link_to "Sign Up", new_user_path, class: "navbar-text pull-right" %>
+      <%= link_to "Log In", new_user_session_path, class: "navbar-text pull-right" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "navbar-text pull-right" %>
     <% end %>
   </div>
 

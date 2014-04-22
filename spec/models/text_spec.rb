@@ -15,4 +15,6 @@ describe Text, :vcr => true do
     text.save
     text.from.should eq '5034054073'
   end
+
+  it { should have_many :addresses}
 end

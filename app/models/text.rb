@@ -1,5 +1,7 @@
 class Text < ActiveRecord::Base
   before_create :send_text
+  has_many :recipients
+  accepts_nested_attributes_for :recipients
 
 private
 

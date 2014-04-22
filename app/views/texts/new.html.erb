@@ -1,13 +1,11 @@
 <h2> Send a new text!</h2>
-
-<%= form_for @address do |f| %>
-     <div class="form-group">
-        <%= f.label :To %></br>
-        <%= f.collection_select(:address, @addresses, :phone, :name) %>
-      </div>
-<% end %>
-
-  <%= fields_for @text do |f| %>
+<%= form_for @text, :remote => true do |f| %>
+<div class="form-group">
+  <%= hidden_field_tag "text[recipient_ids][]", nil %>
+  <% Recipient.all.each do |recipient| %>
+        <%= check_box_tag "text[recipient_ids][]", recipient.id, @text.recipient_ids.include?(recipient.id), id: dom_id(recipient) %>
+        <%= label_tag dom_id(recipient), recipient.name %>
+    <% end %>
 
     <div class="form-group">
     <%= f.hidden_field :from, :value => '5034054073' %>

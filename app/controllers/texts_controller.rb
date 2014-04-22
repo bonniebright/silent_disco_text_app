@@ -10,13 +10,15 @@ class TextsController < ApplicationController
 
   def new
     @text = Text.new
-    @address = Address.new
-    @addresses = Address.all
+    @recipient = Recipient.new
+    @recipients = Recipient.all
+    @text.recipients.build
   end
 
 
 
   def create
+    # @sendto = Address.find(params)
     @text = Text.create(texts_params)
     if @text.save
       flash[:notice] = "text sent!"
@@ -35,7 +37,7 @@ class TextsController < ApplicationController
 private
 
   def texts_params
-    params.require(:text).permit(:to, :from, :body)
+    params.require(:text).permit(:to, :from, :body, :text_id, :text_ids, :recipient_ids => [])
   end
 
 end

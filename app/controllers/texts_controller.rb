@@ -18,8 +18,7 @@ class TextsController < ApplicationController
 
 
   def create
-    # @sendto = Address.find(params)
-    @text = Text.create(texts_params)
+    @text = Text.new(texts_params)
     if @text.save
       flash[:notice] = "text sent!"
       redirect_to root_url

@@ -20,6 +20,6 @@ class RecipientsController < ApplicationController
 private
 
   def recipients_params
-    params.require(:recipient).permit(:name, :number, :user_id, :recipient_ids => [], :text_id, :text_ids)
+    params.require(:recipient).permit(:name, :phone, :user_id, :recipient_ids => [])
   end
 end

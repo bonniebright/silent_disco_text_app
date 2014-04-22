@@ -1,8 +1,7 @@
 <h2> Send a new text!</h2>
 <%= form_for @text, :remote => true do |f| %>
 <div class="form-group">
-  <%= hidden_field_tag "text[recipient_ids][]", nil %>
-  <% Recipient.all.each do |recipient| %>
+    <% Recipient.all.each do |recipient| %>
         <%= check_box_tag "text[recipient_ids][]", recipient.id, @text.recipient_ids.include?(recipient.id), id: dom_id(recipient) %>
         <%= label_tag dom_id(recipient), recipient.name %>
     <% end %>
@@ -12,7 +11,7 @@
     </div>
     <div class="form-group">
       <%= f.label :Text_Message %>
-      <%= f.text_field :body %>
+      <%= f.text_field :body, :class => "form-control" %>
     </div>
     <div class="form-group">
       <%= f.submit(:class => "btn btn-primary") %>

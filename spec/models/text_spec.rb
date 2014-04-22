@@ -16,5 +16,5 @@ describe Text, :vcr => true do
     text.from.should eq '5034054073'
   end
 
-  it { should have_many :addresses}
+  it { should have_and_belong_to_many :recipients}
 end
